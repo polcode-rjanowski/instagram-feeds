@@ -1,0 +1,42 @@
+#content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1004px;
+    margin-top: 15px;
+    background: #f9f9f9;
+    overflow: auto;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    -webkit-box-shadow: 10px 10px 15px 0px rgba(204, 204, 204, 1);
+    -moz-box-shadow: 10px 10px 15px 0px rgba(204, 204, 204, 1);
+    box-shadow: 10px 10px 15px 0px rgba(204, 204, 204, 1);
+}
+
+.image-box {
+    float: left;
+    margin: 5px;
+    position: relative;
+}
+
+.image-box img {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.dot-div {
+    width: 20px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background: #000000;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.dot-link {
+    width: 20px;
+    text-decoration: none;
+}
