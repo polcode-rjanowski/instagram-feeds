@@ -5,18 +5,40 @@
             foreach ($post['Points'] as $point) {
                 $position = explode(',', $point['Points']['position']);
                 ?>
-                <a class="dot-link" href="<?php echo $point['Points']['link']; ?>" target="_blank"><div
-                   style="position: absolute; left: <?php echo $position[0]; ?>px; top: <?php echo $position[1]; ?>px;"
-                   class="dot-div">&nbsp;</div></a>
+                <a class="dot-link" href="<?php echo $point['Points']['link']; ?>" target="_blank">
+                    <div
+                        style="position: absolute; left: <?php echo $position[0]; ?>px; top: <?php echo $position[1]; ?>px;"
+                        class="dot-div">&nbsp;</div>
+                </a>
             <?php }
         } ?>
-        <img width="320" height="320" src="<?php echo $post['Posts']['instagram_image_url']; ?>"
-             alt="<?php echo $post['Posts']['text']; ?>"
-             data-image-id="<?php echo $post['Posts']['id']; ?>"
-        />
+        <a class="lightview" href="#inline_example_<?php echo $post['Posts']['id']; ?>"><img
+                width="320"  src="<?php echo $post['Posts']['instagram_image_url']; ?>"
+                alt="<?php echo $post['Posts']['text']; ?>"
+                data-image-id="<?php echo $post['Posts']['id']; ?>"
+            /></a>
+    </div>
+
+    <div id="inline_example_<?php echo $post['Posts']['id']; ?>" style="display: none">
+        <?php
+        if (isset($post['Points'])) {
+            foreach ($post['Points'] as $point) {
+                $positionPercent = explode(',', $point['Points']['position_percent']);
+                list($width, $height) = getimagesize($post['Posts']['instagram_image_url']);
+
+                $left = ($positionPercent[0] * $width) / 100;
+                $top = ($positionPercent[1] * $height) / 100;
+                ?>
+                <a class="dot-link" href="<?php echo $point['Points']['link']; ?>" target="_blank">
+                    <div
+                        style="position: absolute; left: <?php echo $left; ?>px; top: <?php echo $top; ?>px;"
+                        class="dot-div">&nbsp;</div>
+                </a>
+            <?php }
+        } ?>
+        <img src="<?php echo $post['Posts']['instagram_image_url']; ?>" />
     </div>
 <?php } ?>
-
 <!-- Modal -->
 <div id="addImageLinkModal" class="modal fade" role="dialog">
     <div class="modal-dialog">

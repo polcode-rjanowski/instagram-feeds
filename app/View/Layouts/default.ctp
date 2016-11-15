@@ -29,9 +29,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
     echo $this->Html->css('bootstrap.min');
     echo $this->Html->css('main');
+    echo $this->Html->css('lightview');
     echo $this->Html->script('jquery-1.11.3.min');
+    echo $this->Html->script('lightview');
     echo $this->Html->script('bootstrap.min');
-    echo $this->Html->script('main');
+//    echo $this->Html->script('main');
 
     echo $this->fetch('meta');
     echo $this->fetch('css');
