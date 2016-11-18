@@ -33,7 +33,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     echo $this->Html->script('jquery-1.11.3.min');
     echo $this->Html->script('lightview');
     echo $this->Html->script('bootstrap.min');
-//    echo $this->Html->script('main');
+    echo $this->Html->script('main');
 
     echo $this->fetch('meta');
     echo $this->fetch('css');
@@ -46,9 +46,16 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         <div id="header">
             <h1><?php echo $this->Html->image('instagram.png', array('alt' => 'Instagram')); ?>
                 Instagram - recent posts
-                <button style="margin: 8px;" class="btn btn-primary pull-right" onclick="window.location.href='<?php echo $loginUrl; ?>'">
-                    Join
-                </button>
+                <?php if ($loggedIn) { ?>
+                    <button style="margin: 8px;" class="btn btn-primary pull-right"
+                            onclick="window.location.href='<?php echo $loginUrl; ?>'">
+                        Join
+                    </button>
+                    <button style="margin: 8px;" class="btn btn-primary pull-right"
+                            onclick="window.location.href='/instagram-feeds/admin/logout'">
+                        Logout
+                    </button>
+                <?php } ?>
             </h1>
         </div>
 

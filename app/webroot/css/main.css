@@ -40,3 +40,10 @@
     width: 20px;
     text-decoration: none;
 }
+
+.login-div {
+    width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 25px;
+}

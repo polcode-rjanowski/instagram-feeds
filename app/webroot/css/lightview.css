@@ -106,7 +106,7 @@
 .lv_title_caption {
   position:absolute;
   font: 11px/18px "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Tahoma, Arial, sans-serif;
-  color: #eaeaea;
+  color: #000000;
 }
 .lv_title_caption_slider { position: relative; float:left; overflow-y: hidden;}
 .lv_title_caption_slide { position: relative; float: left; top: 0; left: 0; padding: 15px 0 7px 0; }

@@ -29,32 +29,4 @@ class InstagramController extends AppController
         
         $this->set('posts', $posts);
     }
-
-    public function addLinkToImage()
-    {
-        if ($this->request->is('post')) {
-
-            $post = $this->Posts->findById($this->request->data['image_id']);
-            if (!empty($post)) {
-                $this->Points->save([
-                    'position' => $this->request->data['pos_x'] . "," . $this->request->data['pos_y'],
-                    'position_percent' => 1,
-                    'link' => $this->request->data['link']
-                ]);
-
-                $points = $post['Posts']['points'] == '' ? $this->Points->id : $post['Posts']['points'] . "," . $this->Points->id;
-                $this->Posts->set('id', $this->request->data['image_id']);
-                $this->Posts->set('points', $points);
-                $this->Posts->save();
-
-                $response = ['status' => 'success'];
-            } else {
-                $response = ['status' => 'error'];
-            }
-
-            echo json_encode($response);
-            exit;
-        }
-    }
-
 }

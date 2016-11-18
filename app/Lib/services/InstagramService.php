@@ -27,7 +27,7 @@ class InstagramService
 
     public function retrieveAccessToken($code)
     {
-        $modelUsers = ClassRegistry::init('Users');
+        $modelUsers = ClassRegistry::init('Accesstokens');
         $tokenData = $this->instagram->getOAuthToken($code);
 
         $userExists = $modelUsers->find('first', ['conditions' => ['user_id' => $tokenData->user->id], 'fields' => 'user_id']);
