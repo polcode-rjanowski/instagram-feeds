@@ -47,10 +47,14 @@ class InstagramService
             foreach ($posts->data as $post) {
                 $postExists = $modelPosts->findById($post->id);
                 if(empty($postExists)){
+                    $date = new DateTime();
+                    $date->setTimestamp($post->created_time);
+
                     $modelPosts->save([
                         'id' =>$post->id,
                         'instagram_image_url'=>$post->images->standard_resolution->url,
-                        'text'=> isset($post->caption->text) ? $post->caption->text : ''
+                        'text'=> isset($post->caption->text) ? $post->caption->text : '',
+                        'created' => $date->format("Y-m-d H:i:s")
                     ]);
                 }
             }

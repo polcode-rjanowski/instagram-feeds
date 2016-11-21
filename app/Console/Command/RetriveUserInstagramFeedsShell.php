@@ -11,7 +11,7 @@ class RetriveUserInstagramFeedsShell extends AppShell
         $users = $this->Accesstokens->find('all');
         if(!empty($users)){
             foreach ($users as $user){
-                $instagram->setAccessToken($user['Users']['access_token']);
+                $instagram->setAccessToken($user['Accesstokens']['access_token']);
                 $instagram->getPosts();
             }
         }

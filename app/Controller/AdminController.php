@@ -53,7 +53,7 @@ class AdminController extends AppController
             $media = $instagramService->getPosts();
         }
 
-        $posts = $this->Posts->find('all');
+        $posts = $this->Posts->find('all', ['order'=>'created DESC']);
         foreach ($posts as $key => $post) {
             if ($post['Posts']['points'] != '') {
                 $pointsIds = explode(',', $post['Posts']['points']);

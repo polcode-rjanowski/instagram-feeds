@@ -47,7 +47,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         <div id="header">
             <h1><?php echo $this->Html->image('instagram.png', array('alt' => 'Instagram')); ?>
                 Instagram - recent posts
-                <?php if ($loggedIn) { ?>
+                <?php if ($loggedIn && $this->params['controller'] == 'admin') { ?>
                     <button style="margin: 8px;" class="btn btn-primary pull-right"
                             onclick="window.location.href='<?php echo $loginUrl; ?>'">
                         Join
