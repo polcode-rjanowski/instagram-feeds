@@ -24,7 +24,7 @@ $(document).ready(function () {
         var image_id = $('#image-id').val();
         var link = $('#image-link').val();
 
-        $.post('/instagram-feeds/admin/addLinkToImage', {
+        $.post('/admin/addLinkToImage', {
             dot_id: dot_id,
             pos_x: position_x,
             pos_y: position_y,
@@ -50,7 +50,7 @@ $(document).ready(function () {
     $('#remove-link').click(function () {
         var dot_id = $('#dot-id').val();
 
-        $.post('/instagram-feeds/admin/removeDot', {
+        $.post('/admin/removeDot', {
             dot_id: dot_id,
         }, function (data) {
             window.location.reload(true);
