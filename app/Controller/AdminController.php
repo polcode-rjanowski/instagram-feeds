@@ -8,6 +8,7 @@ class AdminController extends AppController
 
     public function beforeFilter()
     {
+        parent::beforeFilter();
         $this->Auth->deny();
         $this->Auth->loginAction = ['controller' => 'admin', 'action' => 'login'];
         $this->Auth->logoutRedirect = ['controller' => 'admin', 'action' => 'login'];

@@ -28,8 +28,7 @@
         <?php
         if (isset($post['Points'])) {
             foreach ($post['Points'] as $point) {
-                $positionPercent = explode(',', $point['Points']['position_percent']);
-
+                $position = explode(',', $point['Points']['position']);
 
                 ?>
                 <a class="dot-link" href="<?php echo $point['Points']['link']; ?>" target="_blank">

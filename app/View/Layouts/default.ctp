@@ -33,8 +33,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     echo $this->Html->script('jquery-1.11.3.min');
     echo $this->Html->script('lightview');
     echo $this->Html->script('bootstrap.min');
-    echo $this->Html->script('main');
-
+    if($this->params['controller'] == 'admin'){
+        echo $this->Html->script('main');
+    }
     echo $this->fetch('meta');
     echo $this->fetch('css');
     echo $this->fetch('script');
@@ -52,7 +53,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         Join
                     </button>
                     <button style="margin: 8px;" class="btn btn-primary pull-right"
-                            onclick="window.location.href='/instagram-feeds/admin/logout'">
+                            onclick="window.location.href='/admin/logout'">
                         Logout
                     </button>
                 <?php } ?>
