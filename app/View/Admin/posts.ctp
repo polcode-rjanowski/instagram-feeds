@@ -1,3 +1,5 @@
+<?php echo $this->Html->image('brandnation-logo-black.png', array('alt' => 'Brandnation', 'class' => 'brandnation-logo')); ?>
+<hr style="border-color: #000000">
 <?php foreach ($posts as $post) {
     list($imageWidth, $imageHeight) = getimagesize($post['Posts']['instagram_image_url']);
     ?>
