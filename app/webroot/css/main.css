@@ -88,7 +88,39 @@
     padding: 5px;
 }
 
-.ui-dialog, .ui-widget, .ui-widget-content, .ui-corner-all, .ui-front, .ui-draggable {
-    border: none;
+.inline-example {
     background: #ffffff;
+}
+
+.lv_content {
+    overflow: hidden;
+    padding-right: 17px;
+}
+
+.shopping-basket-corner {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 120px 120px;
+    border-color: transparent transparent #ffffff transparent;
+    position: relative;
+}
+
+.shopping-basket-icon {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: -60px;
+    top: 60px;
+}
+
+.large-shoppable-ui {
+    width: 200px;
+    height: 550px;
+}
+
+.points-list-image {
+    width: 180px;
+    height: 180px;
+    margin: 10px;
 }
