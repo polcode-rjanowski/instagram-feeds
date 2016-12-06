@@ -122,7 +122,7 @@
 
 .points-list-image {
     width: 180px;
-    height: 180px;
+    max-height: 180px;
     margin: 10px;
 }
 

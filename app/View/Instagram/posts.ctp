@@ -19,7 +19,7 @@
                         <a class="dot-link" href="<?php echo $point['Points']['link']; ?>"
                            data-image-url="<?php echo $point['Points']['image_url']; ?>"
                            data-price="<?php echo $point['Points']['price']; ?>"
-                           data-name="<?php echo $point['Points']['link']; ?>"
+                           data-name="<?php echo $point['Points']['name']; ?>"
                         >
                             <div
                                 style="position: absolute; left: <?php echo $left; ?>px; top: <?php echo $top; ?>px;"
@@ -46,10 +46,10 @@
                         $position = explode(',', $point['Points']['position']);
 
                         ?>
-                        <a class="dot-link-large"
+                        <a class="dot-link-large" href="<?php echo $point['Points']['link']; ?>"
                            data-image-url="<?php echo $point['Points']['image_url']; ?>"
                            data-price="<?php echo $point['Points']['price']; ?>"
-                           data-name="<?php echo $point['Points']['link']; ?>"
+                           data-name="<?php echo $point['Points']['name']; ?>"
                            data-point-id="<?php echo $point['Points']['id']; ?>"
                         >
                             <div
@@ -71,7 +71,7 @@
                         <div class="points-list-image"
                              data-image-url="<?php echo $point['Points']['image_url']; ?>"
                              data-price="<?php echo $point['Points']['price']; ?>"
-                             data-name="<?php echo $point['Points']['link']; ?>"
+                             data-name="<?php echo $point['Points']['name']; ?>"
                              data-point-id="<?php echo $point['Points']['id']; ?>">
                             <img width="180px" src="<?php echo $point['Points']['image_url']; ?>">
                         </div>
@@ -95,7 +95,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><a id="small-product-link" href="" class="btn btn-dark">VIEW</a></td>
+            <td><a id="small-product-link" href="" class="btn btn-dark" target="_blank">VIEW</a></td>
         </tr>
     </table>
 

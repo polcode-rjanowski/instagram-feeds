@@ -11,9 +11,9 @@ class InstagramService
     public function __construct()
     {
         $this->instagram = new Instagram([
-            'apiKey' => '4f402ba3f6364bad93764b3b7e91d186',
-            'apiSecret' => '61d5d96445c24db5958897cd1f9ec9c2',
-            'apiCallback' => 'http://instagram-feeds.rjanowski.sites.polcode.net/instagram/posts'
+            'apiKey' => INSTAGRAM_API_KEY,
+            'apiSecret' => INSTAGRAM_API_SECRET,
+            'apiCallback' => INSTAGRAM_API_CALLBACK
         ]);
     }
 

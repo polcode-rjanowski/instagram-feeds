@@ -34,7 +34,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 1);
+	Configure::write('debug', 0);
 
 /**
  * Configure the Error handler used to handle errors for your application. By default
@@ -387,3 +387,8 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
+
+
+define('INSTAGRAM_API_KEY', '4f402ba3f6364bad93764b3b7e91d186');
+define('INSTAGRAM_API_SECRET', '61d5d96445c24db5958897cd1f9ec9c2');
+define('INSTAGRAM_API_CALLBACK', 'http://instagram-feeds.rjanowski.sites.polcode.net/instagram/posts');
