@@ -17,7 +17,7 @@ class InstagramController extends AppController
         }
 
         $posts = $this->Posts->find('all', ['order'=>'created DESC']);
-        foreach ($posts as $key => $post) {
+        foreach ($posts as $key => &$post) {
             if ($post['Posts']['points'] != '') {
                 $pointsIds = explode(',', $post['Posts']['points']);
                 if (!empty($pointsIds)) {

@@ -113,4 +113,16 @@ class AdminController extends AppController
             exit;
         }
     }
+
+    public function getImagesSize(){
+        $images = $this->Posts->find('all', ['conditions'=>['width'=>null]]);
+        foreach ($images as $image){
+            $this->Posts->id = $image['Posts']['id'];
+            list($width, $height) = getimagesize($image['Posts']['instagram_image_url']);
+            $this->Posts->save(['width'=> $width, 'height'=>$height]);
+        }
+        $response = ['status' => 'success'];
+        echo json_encode($response);
+        exit;
+    }
 }

@@ -2,6 +2,7 @@
 <hr style="border-color: #000000">
 <div class="posts">
     <?php foreach ($posts as $post) {
+
         $thumbSize = 320;
         ?>
         <div class="image-box">
@@ -28,7 +29,9 @@
                 } ?>
             </div>
             <a class="lightview image-thumb" href="#inline_example_<?php echo $post['Posts']['id']; ?>"
-               data-lightview-options="skin: 'mac'">
+               data-lightview-options="skin: 'mac'"
+               data-origin-width="<?php echo $post['Posts']['width']; ?>"
+            >
                 <img
                     width="320" src="<?php echo $post['Posts']['instagram_image_url']; ?>"
                     alt="<?php echo $post['Posts']['text']; ?>"
@@ -43,7 +46,12 @@
                         $position = explode(',', $point['Points']['position']);
 
                         ?>
-                        <a class="dot-link" href="<?php echo $point['Points']['link']; ?>" target="_blank">
+                        <a class="dot-link-large"
+                           data-image-url="<?php echo $point['Points']['image_url']; ?>"
+                           data-price="<?php echo $point['Points']['price']; ?>"
+                           data-name="<?php echo $point['Points']['link']; ?>"
+                           data-point-id="<?php echo $point['Points']['id']; ?>"
+                        >
                             <div
                                 style="position: absolute; left: <?php echo $position[0]; ?>px; top: <?php echo $position[1]; ?>px;"
                                 class="dot-div">&nbsp;</div>
@@ -51,19 +59,20 @@
                     <?php }
                 } ?>
             </div>
-            <?php
-            list($imageWidth, $imageHeight) = getimagesize($post['Posts']['instagram_image_url']);
-            ?>
             <div class="shopping-basket-corner"
-                 style="position: absolute; left: <?php echo($imageWidth - 120); ?>px; top: <?php echo($imageHeight - 120); ?>px;">
+                 style="position: absolute; left: <?php echo($post['Posts']['width'] - 120); ?>px; top: <?php echo($post['Posts']['width'] - 120); ?>px;">
                 <?php echo $this->Html->image('shopping-basket.png', array('class' => 'shopping-basket-icon')); ?>
             </div>
             <div class="large-shoppable-ui"
-                 style="display:none; position: absolute; left: <?php echo $imageWidth; ?>px; top: 0px">
+                 style="display:none; position: absolute; left: <?php echo $post['Posts']['width']; ?>px; top: 0px">
                 <?php
                 if (isset($post['Points'])) {
                     foreach ($post['Points'] as $point) { ?>
-                        <div class="points-list-image">
+                        <div class="points-list-image"
+                             data-image-url="<?php echo $point['Points']['image_url']; ?>"
+                             data-price="<?php echo $point['Points']['price']; ?>"
+                             data-name="<?php echo $point['Points']['link']; ?>"
+                             data-point-id="<?php echo $point['Points']['id']; ?>">
                             <img width="180px" src="<?php echo $point['Points']['image_url']; ?>">
                         </div>
                     <?php }

@@ -78,9 +78,10 @@
     max-height: 100px;
 }
 
-#smallShoppableModal {
+#smallShoppableModal, .ui-dialog {
     background: #ffffff;
     border: none;
+    z-index: 100000 !important;
 }
 
 #smallShoppableModal table, #smallShoppableModal table td{
@@ -116,11 +117,24 @@
 
 .large-shoppable-ui {
     width: 200px;
-    height: 550px;
+    height: auto;
 }
 
 .points-list-image {
     width: 180px;
     height: 180px;
     margin: 10px;
+}
+
+.points-list-image img {
+    cursor: pointer;
+}
+
+.dim-element {
+    background: #000 !important;
+    opacity: 0.25;
+}
+
+.thumbs-dot-box {
+    position: absolute;
 }
