@@ -78,13 +78,14 @@
                     <?php }
                 } ?>
             </div>
-            <img class="post-large-image" src="<?php echo $post['Posts']['instagram_image_url']; ?>"/>
+            <img class="post-large-image" src="<?php echo $post['Posts']['instagram_image_url']; ?>" data-origin-width="<?php echo $post['Posts']['width']; ?>"/>
         </div>
     <?php } ?>
 </div>
 
 <!-- small shoppable UI modal -->
 <div id="smallShoppableModal">
+    <div style="" class="small_ui_close"></div>
     <table>
         <tr>
             <td rowspan="2"><img id="small-product-image-url" src=""></td>

@@ -4,6 +4,11 @@ $(document).ready(function () {
         var offset = $(this).offset();
 
         $('#image-link').val("");
+        $('#image-url').val("");
+        $('#name').val("");
+        $('#sku').val("");
+        $('#price').val("");
+        $('#locale').val("");
         $('#remove-link').css('display', 'none');
         $('#dot-id').val(0);
 
@@ -24,6 +29,11 @@ $(document).ready(function () {
         var image_height = $('#image-height').val();
         var image_id = $('#image-id').val();
         var link = $('#image-link').val();
+        var imageUrl = $('#image-url').val();
+        var name = $('#name').val();
+        var price = $('#price').val();
+        var sku = $('#sku').val();
+        var locale = $('#locale').val();
 
         $.post('/admin/addLinkToImage', {
             dot_id: dot_id,
@@ -32,7 +42,12 @@ $(document).ready(function () {
             img_width: image_width,
             img_height: image_height,
             image_id: image_id,
-            link: link
+            link: link,
+            imageUrl: imageUrl,
+            name: name,
+            price: price,
+            sku: sku,
+            locale: locale
         }, function (data) {
             // $('img[data-image-id="' + image_id + '"]').parent().prepend('<a class="dot-link" href="' + link + '" target="_blank"><div style="position: absolute; left: ' + position_x + 'px; top: ' + position_y + 'px" class="dot-div">&nbsp;</div></a>');
             window.location.reload(true);
@@ -44,6 +59,11 @@ $(document).ready(function () {
         $('#remove-link').css('display', 'inline');
         $('#dot-id').val($(this).attr('data-dot-id'));
         $('#image-link').val($(this).parent().attr('href'));
+        $('#image-url').val($(this).parent().attr('data-image-url'));
+        $('#name').val($(this).parent().attr('data-name'));
+        $('#price').val($(this).parent().attr('data-price'));
+        $('#sku').val($(this).parent().attr('data-sku'));
+        $('#locale').val($(this).parent().attr('data-locale'));
         $('#image-id').val($(this).parent().siblings('.image-edit').attr('data-image-id'));
         $('#addImageLinkModal').modal('toggle');
     })

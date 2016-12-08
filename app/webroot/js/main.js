@@ -1,27 +1,35 @@
 $(document).ready(function () {
 
     //---------foucus on one image, dot showing----------------
-    var enterThumb = false;
+    var lastTimeMouseMoved = new Date().getTime();
     $('.image-thumb').mouseenter(function (e) {
-        if (!enterThumb) {
-            if ($(this).siblings('.thumbs-dot-box').has('.dot-link').length) {
-                $(this).siblings('.thumbs-dot-box').toggle(500);
+        lastTimeMouseMoved = new Date().getTime();
+        setTimeout(function (target) {
+            var currentTime = new Date().getTime();
+            if (currentTime - lastTimeMouseMoved > 1000) {
+                if ($(target).siblings('.thumbs-dot-box').has('.dot-link').length) {
+                    $(target).siblings('.thumbs-dot-box').show(500);
+                }
+                $(target).addClass('active');
+                $('.image-thumb').not('.active').animate({opacity: 0.25});
             }
-            $(this).addClass('active');
-            $('.image-thumb').not('.active').animate({opacity: 0.25});
-            $('.inline-example').css('width', $(this).attr('data-origin-width'));
-            enterThumb = true;
-        }
-    }).mouseleave(function (e) {
-        if ($('.dot-link:hover').length == 0) {
-            if ($(this).siblings('.thumbs-dot-box').has('.dot-link').length) {
-                $(this).siblings('.thumbs-dot-box').toggle(500);
+        }, 1000, this);
+        $('.inline-example').css('width', $(this).attr('data-origin-width'));
+    });
+
+    $('.image-thumb').mouseleave(function (e) {
+        var currentTime = new Date().getTime();
+        if (currentTime - lastTimeMouseMoved > 1000) {
+            if ($('.dot-link:hover').length == 0) {
+                if ($(this).siblings('.thumbs-dot-box').has('.dot-link').length) {
+                    $(this).siblings('.thumbs-dot-box').hide(500);
+                }
+                $(this).removeClass('active');
+                $('.image-thumb').animate({opacity: 1});
             }
-            $(this).removeClass('active');
-            $('.image-thumb').animate({opacity: 1});
-            enterThumb = false;
+            $('#smallShoppableModal').dialog('close');
         }
-        $('#smallShoppableModal').dialog('close');
+        lastTimeMouseMoved = new Date().getTime();
     });
 
     //---------small shoppable UI--------------
@@ -55,22 +63,33 @@ $(document).ready(function () {
         $(".ui-dialog-titlebar").hide();
     }
 
-    var enterDot = false;
+    $('.small_ui_close').click(function () {
+        $('#smallShoppableModal').dialog('close');
+    });
+
+    var enterDot = new Date().getTime();
     $('.dot-link-large').mouseenter(function (e) {
-        if (!enterDot) {
-            showSmallShoppableUI(this, e.target, e);
-            $('#smallShoppableModal').dialog('open');
-            $('.post-large-image').animate({opacity: 0.25});
-            $('.points-list-image').not('[data-point-id=' + $(this).attr('data-point-id') + ']').animate({opacity: 0.25});
-            enterDot = true;
-        }
+        enterDot = new Date().getTime();
+        setTimeout(function (target) {
+            var currentTime = new Date().getTime();
+            if (currentTime - enterDot > 500) {
+                showSmallShoppableUI(target, e.target, e);
+                $('#smallShoppableModal').dialog('open');
+                $('.post-large-image').animate({opacity: 0.25});
+                $('.points-list-image').not('[data-point-id=' + $(target).attr('data-point-id') + ']').animate({opacity: 0.25});
+                enterDot = true;
+            }
+        }, 500, this);
     });
 
     $('#smallShoppableModal').mouseleave(function () {
-        $('#smallShoppableModal').dialog('close');
-        $('.post-large-image').animate({opacity: 1});
-        $('.points-list-image').animate({opacity: 1});
-        enterDot = false;
+        var currentTime = new Date().getTime();
+        if (currentTime - enterDot > 500) {
+            $('#smallShoppableModal').dialog('close');
+            $('.post-large-image').animate({opacity: 1});
+            $('.points-list-image').animate({opacity: 1});
+        }
+        enterDot = new Date().getTime();
     });
 
     $('.points-list-image').click(function (e) {
@@ -120,6 +139,7 @@ $(document).ready(function () {
             }
             enterImage = false;
         }
+        $('.inline-example').css('width', $(this).attr('data-origin-width'));
     });
 
 });

@@ -53,7 +53,7 @@ class AdminController extends AppController
             $media = $instagramService->getPosts();
         }
 
-        $posts = $this->Posts->find('all', ['order'=>'created DESC']);
+        $posts = $this->Posts->find('all', ['order' => 'created DESC']);
         foreach ($posts as $key => $post) {
             if ($post['Posts']['points'] != '') {
                 $pointsIds = explode(',', $post['Posts']['points']);
@@ -73,10 +73,16 @@ class AdminController extends AppController
 
             $data = $this->request->data;
             $post = $this->Posts->findById($data['image_id']);
+            $data['price'] = str_replace(',', '.', $data['price']);
             if (!empty($post)) {
                 if ($data['dot_id'] != 0) {
                     $this->Points->set('id', $data['dot_id']);
                     $this->Points->set('link', $data['link']);
+                    $this->Points->set('image_url', $data['imageUrl']);
+                    $this->Points->set('name', $data['name']);
+                    $this->Points->set('sku', $data['sku']);
+                    $this->Points->set('price', $data['price']);
+                    $this->Points->set('locale', $data['locale']);
                     $this->Points->save();
                 } else {
                     $widthPercent = round(($data['pos_x'] / $data['img_width']), 2) * 100;
@@ -85,7 +91,12 @@ class AdminController extends AppController
                     $this->Points->save([
                         'position' => $data['pos_x'] . "," . $data['pos_y'],
                         'position_percent' => $widthPercent . "," . $heightPercent,
-                        'link' => $data['link']
+                        'link' => $data['link'],
+                        'image_url' => $data['imageUrl'],
+                        'name' => $data['name'],
+                        'price' => $data['price'],
+                        'sku' => $data['sku'],
+                        'locale' => $data['locale']
                     ]);
 
                     $points = $post['Posts']['points'] == '' ? $this->Points->id : $post['Posts']['points'] . "," . $this->Points->id;
@@ -114,12 +125,13 @@ class AdminController extends AppController
         }
     }
 
-    public function getImagesSize(){
-        $images = $this->Posts->find('all', ['conditions'=>['width'=>null]]);
-        foreach ($images as $image){
+    public function getImagesSize()
+    {
+        $images = $this->Posts->find('all', ['conditions' => ['width' => null]]);
+        foreach ($images as $image) {
             $this->Posts->id = $image['Posts']['id'];
             list($width, $height) = getimagesize($image['Posts']['instagram_image_url']);
-            $this->Posts->save(['width'=> $width, 'height'=>$height]);
+            $this->Posts->save(['width' => $width, 'height' => $height]);
         }
         $response = ['status' => 'success'];
         echo json_encode($response);

@@ -2,7 +2,6 @@
 #################################################
 /app/Config/database.php
 /app/Config/core.php
-/app/Config/settings.php
 /app/tmp
 /lib/Cake/Console/Templates/skel/tmp/
 /build

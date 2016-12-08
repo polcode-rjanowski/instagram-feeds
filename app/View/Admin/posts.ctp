@@ -20,8 +20,9 @@
                 </a>
             <?php }
         } ?>
-        <a class="lightview" href="#inline_example_<?php echo $post['Posts']['id']; ?>"
-           data-lightview-options="overlay: {
+        <a class="lightview"
+           href="#inline_example_<?php echo $post['Posts']['id']; ?>"
+           data-lightview-options="skin: 'mac', overlay: {
                   background: '#ffffff',
                   opacity: 0
                 }"
@@ -39,7 +40,13 @@
                 $position = explode(',', $point['Points']['position']);
 
                 ?>
-                <a class="dot-link" href="<?php echo $point['Points']['link']; ?>">
+                <a class="dot-link" href="<?php echo $point['Points']['link']; ?>"
+                   data-image-url="<?php echo $point['Points']['image_url']; ?>"
+                   data-name="<?php echo $point['Points']['name']; ?>"
+                   data-sku="<?php echo $point['Points']['sku']; ?>"
+                   data-price="<?php echo $point['Points']['price']; ?>"
+                   data-locale="<?php echo $point['Points']['locale']; ?>"
+                >
                     <div data-dot-id="<?php echo $point['Points']['id']; ?>"
                          style="position: absolute; left: <?php echo $position[0]; ?>px; top: <?php echo $position[1]; ?>px;"
                          class="dot-div">&nbsp;</div>
@@ -52,13 +59,13 @@
     </div>
 <?php } ?>
 <!-- Modal -->
-<div id="addImageLinkModal" class="modal fade" role="dialog" style="z-index: 100000;">
+<div id="addImageLinkModal" class="modal fade" role="dialog" style="z-index: 100000;text-align: left">
     <div class="modal-dialog">
 
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Add link to image</h4>
+                <h4 class="modal-title">Add point to image</h4>
             </div>
             <div class="modal-body">
                 <input type="hidden" id="dot-id" name="dot-id"/>
@@ -67,7 +74,31 @@
                 <input type="hidden" id="image-width" name="image-width"/>
                 <input type="hidden" id="image-height" name="image-height"/>
                 <input type="hidden" id="image-id" name="image-id" value="0"/>
-                <input type="text" class="form-control" id="image-link" name="image-link"/>
+                <div class="form-group">
+                    <label for="image-link">URL</label>
+                    <input type="text" class="form-control" id="image-link" name="image-link"/>
+                </div>
+                <div class="form-group">
+                    <label for="image-url">Image URL</label>
+                    <input type="text" class="form-control" id="image-url" name="image-url"/>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name"/>
+                </div>
+                <div class="form-group">
+                    <label for="sku">SKU</label>
+                    <input type="text" class="form-control" id="sku" name="sku"/>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text" class="form-control" id="price" name="price"/>
+                </div>
+                <div class="form-group">
+                    <label for="locale">Locale</label>
+                    <input type="text" class="form-control" id="locale" name="locale"/>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button id="remove-link" style="display: none" type="button" class="btn btn-danger">Remove</button>

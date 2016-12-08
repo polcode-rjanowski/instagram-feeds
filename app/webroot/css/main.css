@@ -97,6 +97,9 @@
     overflow: hidden;
     padding-right: 17px;
 }
+.lv_bubble{
+    background: #ffffff !important;
+}
 
 .shopping-basket-corner {
     width: 0;
@@ -137,4 +140,20 @@
 
 .thumbs-dot-box {
     position: absolute;
+}
+
+.small_ui_close {
+    width: 33px;
+    height: 33px;
+    position: absolute;
+    cursor: pointer;
+    background-image: url("../img/sprite.png");
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    top: 0px;
+    right: 0px;
+    z-index: 10000000;
+}
+.small_ui_close:hover {
+    background-position: -33px 0px;
 }
