@@ -54,6 +54,8 @@ class InstagramService
                         'id' =>$post->id,
                         'instagram_image_url'=>$post->images->standard_resolution->url,
                         'text'=> isset($post->caption->text) ? $post->caption->text : '',
+                        'width'=>$post->images->standard_resolution->width,
+                        'height'=>$post->images->standard_resolution->height,
                         'created' => $date->format("Y-m-d H:i:s")
                     ]);
                 }

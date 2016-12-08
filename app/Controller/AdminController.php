@@ -73,7 +73,6 @@ class AdminController extends AppController
 
             $data = $this->request->data;
             $post = $this->Posts->findById($data['image_id']);
-            $data['price'] = str_replace(',', '.', $data['price']);
             if (!empty($post)) {
                 if ($data['dot_id'] != 0) {
                     $this->Points->set('id', $data['dot_id']);

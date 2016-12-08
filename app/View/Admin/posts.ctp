@@ -16,7 +16,7 @@
                 <a class="dot-link" href="<?php echo $point['Points']['link']; ?>" target="_blank">
                     <div
                         style="position: absolute; left: <?php echo $left; ?>px; top: <?php echo $top; ?>px;"
-                        class="dot-div">&nbsp;</div>
+                        class="small-dot-div">&nbsp;</div>
                 </a>
             <?php }
         } ?>

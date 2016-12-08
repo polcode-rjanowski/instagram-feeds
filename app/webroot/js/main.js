@@ -6,20 +6,20 @@ $(document).ready(function () {
         lastTimeMouseMoved = new Date().getTime();
         setTimeout(function (target) {
             var currentTime = new Date().getTime();
-            if (currentTime - lastTimeMouseMoved > 1000) {
+            if (currentTime - lastTimeMouseMoved > 500) {
                 if ($(target).siblings('.thumbs-dot-box').has('.dot-link').length) {
                     $(target).siblings('.thumbs-dot-box').show(500);
                 }
                 $(target).addClass('active');
                 $('.image-thumb').not('.active').animate({opacity: 0.25});
             }
-        }, 1000, this);
+        }, 500, this);
         $('.inline-example').css('width', $(this).attr('data-origin-width'));
     });
 
     $('.image-thumb').mouseleave(function (e) {
         var currentTime = new Date().getTime();
-        if (currentTime - lastTimeMouseMoved > 1000) {
+        if (currentTime - lastTimeMouseMoved > 500) {
             if ($('.dot-link:hover').length == 0) {
                 if ($(this).siblings('.thumbs-dot-box').has('.dot-link').length) {
                     $(this).siblings('.thumbs-dot-box').hide(500);
@@ -51,7 +51,7 @@ $(document).ready(function () {
 
         $('#small-product-image-url').attr('src', $(element).attr('data-image-url'));
         $('#small-product-name').text($(element).attr('data-name'));
-        $('#small-product-price').text("£" + $(element).attr('data-price'));
+        $('#small-product-price').text($(element).attr('data-price'));
         $('#small-product-link').attr('href', $(element).attr('href'));
 
         $('#smallShoppableModal').dialog("option", "position", {
